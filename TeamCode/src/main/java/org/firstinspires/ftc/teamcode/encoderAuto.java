@@ -15,7 +15,6 @@ public class encoderAuto extends LinearOpMode {
         DcMotorEx backLeftMotor = hardwareMap.get(DcMotorEx.class, "bl");
         DcMotorEx frontRightMotor = hardwareMap.get(DcMotorEx.class, "fr");
         DcMotorEx backRightMotor = hardwareMap.get(DcMotorEx.class, "br");
-        DcMotorEx intakeMotor = hardwareMap.get(DcMotorEx.class, "intake");
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -27,19 +26,6 @@ public class encoderAuto extends LinearOpMode {
             double y = -gamepad1.left_stick_y;
             double x = gamepad1.left_stick_x;
             double rx = gamepad1.right_stick_x;
-
-            if (gamepad1.a) {
-                intakeMotor.setPower(0.8);
-                //run
-            }
-            if (gamepad1.b) {
-                intakeMotor.setPower(0);
-                //stop intake
-            }
-            if (gamepad1.x) {
-                intakeMotor.setPower(-0.8);
-                //reverse intake
-            }
 
 
             double frontLeftPower   = y + x + rx;
