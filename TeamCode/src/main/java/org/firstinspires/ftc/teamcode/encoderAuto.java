@@ -5,11 +5,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 public class encoderAuto extends LinearOpMode {
 
-    @Override
+    private ElapsedTime timer = new ElapsedTime();
     public void runOpMode() throws InterruptedException {
         DcMotorEx frontLeftMotor = hardwareMap.get(DcMotorEx.class, "fl");
         DcMotorEx backLeftMotor = hardwareMap.get(DcMotorEx.class, "bl");
@@ -22,10 +23,45 @@ public class encoderAuto extends LinearOpMode {
         waitForStart();
 
 
-        frontLeftMotor.setPower(frontLeftPower);
-        backLeftMotor.setPower(backLeftPower);
-        frontRightMotor.setPower(frontRightPower);
-        backRightMotor.setPower(backRightPower);
+        frontLeftMotor.setPower(-0.5);
+        backLeftMotor.setPower(0.5);
+        frontRightMotor.setPower(0.5);
+        backRightMotor.setPower(-0.5);
+
+        sleep(500);
+
+        frontLeftMotor.setPower(-0.5);
+        backLeftMotor.setPower(-0.5);
+        frontRightMotor.setPower(-0.5);
+        backRightMotor.setPower(-0.5);
+
+        sleep(500);
+
+        frontLeftMotor.setPower(0.5);
+        backLeftMotor.setPower(-0.5);
+        frontRightMotor.setPower(-0.5);
+        backRightMotor.setPower(0.5);
+
+        sleep(500);
+
+        frontLeftMotor.setPower(0.5);
+        backLeftMotor.setPower(0.5);
+        frontRightMotor.setPower(0.5);
+        backRightMotor.setPower(0.5);
+
+        sleep(500);
+
+
+
+        timer.reset();
+        while(timer.milliseconds() < 500) {
+
+        }
+
+        frontLeftMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        frontRightMotor.setPower(0);
+        backRightMotor.setPower(0);
 
 
     }
