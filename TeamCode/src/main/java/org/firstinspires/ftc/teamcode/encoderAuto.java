@@ -15,29 +15,18 @@ public class encoderAuto extends LinearOpMode {
         DcMotorEx backLeftMotor = hardwareMap.get(DcMotorEx.class, "bl");
         DcMotorEx frontRightMotor = hardwareMap.get(DcMotorEx.class, "fr");
         DcMotorEx backRightMotor = hardwareMap.get(DcMotorEx.class, "br");
+
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
 
-        if (isStopRequested()) return;
 
-        while (opModeIsActive()) {
-            double y = -gamepad1.left_stick_y;
-            double x = gamepad1.left_stick_x;
-            double rx = gamepad1.right_stick_x;
+        frontLeftMotor.setPower(frontLeftPower);
+        backLeftMotor.setPower(backLeftPower);
+        frontRightMotor.setPower(frontRightPower);
+        backRightMotor.setPower(backRightPower);
 
-
-            double frontLeftPower   = y + x + rx;
-            double backLeftPower    = y - x + rx;
-            double frontRightPower  = y - x - rx;
-            double backRightPower   = y + x - rx;
-
-            frontLeftMotor.setPower(frontLeftPower);
-            backLeftMotor.setPower(backLeftPower);
-            frontRightMotor.setPower(frontRightPower);
-            backRightMotor.setPower(backRightPower);
-        }
 
     }
 }
