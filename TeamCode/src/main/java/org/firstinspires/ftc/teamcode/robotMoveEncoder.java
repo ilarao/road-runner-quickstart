@@ -11,15 +11,43 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous
 public class robotMoveEncoder extends LinearOpMode {
 
+    DcMotorEx frontLeftMotor;
+    DcMotorEx backLeftMotor;
+    DcMotorEx frontRightMotor;
+    DcMotorEx backRightMotor;
+
+    public void reset() {
+        frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
+    public void runtoposition(){
+        frontLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        backRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        backLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+        frontLeftMotor.setPower(0.2);
+        frontRightMotor.setPower(0.2);
+        backRightMotor.setPower(0.2);
+        backLeftMotor.setPower(0.2);
+    }
+
+
     private ElapsedTime timer = new ElapsedTime();
     public void runOpMode() throws InterruptedException {
-        DcMotorEx frontLeftMotor = hardwareMap.get(DcMotorEx.class, "fl");
-        DcMotorEx backLeftMotor = hardwareMap.get(DcMotorEx.class, "bl");
-        DcMotorEx frontRightMotor = hardwareMap.get(DcMotorEx.class, "fr");
-        DcMotorEx backRightMotor = hardwareMap.get(DcMotorEx.class, "br");
+       frontLeftMotor = hardwareMap.get(DcMotorEx.class, "fl");
+       backLeftMotor = hardwareMap.get(DcMotorEx.class, "bl");
+       frontRightMotor = hardwareMap.get(DcMotorEx.class, "fr");
+       backRightMotor = hardwareMap.get(DcMotorEx.class, "br");
 
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+
 
         waitForStart();
 
@@ -39,10 +67,10 @@ public class robotMoveEncoder extends LinearOpMode {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-        frontLeftMotor.setPower(0.5);
-        frontRightMotor.setPower(0.5);
-        backRightMotor.setPower(0.5);
-        backLeftMotor.setPower(0.5);
+        frontLeftMotor.setPower(0.2);
+        frontRightMotor.setPower(0.2);
+        backRightMotor.setPower(0.2);
+        backLeftMotor.setPower(0.2);
 
 
         frontLeftMotor.setTargetPosition(300);
@@ -50,45 +78,100 @@ public class robotMoveEncoder extends LinearOpMode {
         backRightMotor.setTargetPosition(300);
         backLeftMotor.setTargetPosition(300);
 
+        runtoposition();
+
         while (frontLeftMotor.isBusy() ||
                 frontRightMotor.isBusy() ||
                 backRightMotor.isBusy() ||
                 backLeftMotor.isBusy()) {
         }
-
+        reset();
 
         frontLeftMotor.setTargetPosition(300);
         frontRightMotor.setTargetPosition(-300);
         backRightMotor.setTargetPosition(-300);
         backLeftMotor.setTargetPosition(300);
 
+        runtoposition();
+
         while (frontLeftMotor.isBusy() ||
                 frontRightMotor.isBusy() ||
                 backRightMotor.isBusy() ||
                 backLeftMotor.isBusy()) {
         }
+        reset();
 
-        frontLeftMotor.setTargetPosition(-300);
+        frontLeftMotor.setTargetPosition(300);
+        frontRightMotor.setTargetPosition(300);
+        backRightMotor.setTargetPosition(300);
+        backLeftMotor.setTargetPosition(300);
+
+        runtoposition();
+
+        while (frontLeftMotor.isBusy() ||
+                frontRightMotor.isBusy() ||
+                backRightMotor.isBusy() ||
+                backLeftMotor.isBusy()) {
+        }
+        reset();
+
+        frontLeftMotor.setTargetPosition(300);
         frontRightMotor.setTargetPosition(-300);
         backRightMotor.setTargetPosition(-300);
-        backLeftMotor.setTargetPosition(-300);
+        backLeftMotor.setTargetPosition(300);
+
+        runtoposition();
 
         while (frontLeftMotor.isBusy() ||
                 frontRightMotor.isBusy() ||
                 backRightMotor.isBusy() ||
                 backLeftMotor.isBusy()) {
         }
+        reset();
 
-            frontLeftMotor.setTargetPosition(-300);
-            frontRightMotor.setTargetPosition(300);
-            backRightMotor.setTargetPosition(300);
-            backLeftMotor.setTargetPosition(-300);
+        frontLeftMotor.setTargetPosition(300);
+        frontRightMotor.setTargetPosition(300);
+        backRightMotor.setTargetPosition(300);
+        backLeftMotor.setTargetPosition(300);
 
-            while (frontLeftMotor.isBusy() ||
-                    frontRightMotor.isBusy() ||
-                    backRightMotor.isBusy() ||
-                    backLeftMotor.isBusy()) {
-            }
+        runtoposition();
+
+        while (frontLeftMotor.isBusy() ||
+                frontRightMotor.isBusy() ||
+                backRightMotor.isBusy() ||
+                backLeftMotor.isBusy()) {
+        }
+        reset();
+
+        frontLeftMotor.setTargetPosition(300);
+        frontRightMotor.setTargetPosition(-300);
+        backRightMotor.setTargetPosition(-300);
+        backLeftMotor.setTargetPosition(300);
+
+        runtoposition();
+
+        while (frontLeftMotor.isBusy() ||
+                frontRightMotor.isBusy() ||
+                backRightMotor.isBusy() ||
+                backLeftMotor.isBusy()) {
+        }
+        reset();
+
+
+
+        frontLeftMotor.setTargetPosition(300);
+        frontRightMotor.setTargetPosition(300);
+        backRightMotor.setTargetPosition(300);
+        backLeftMotor.setTargetPosition(300);
+
+        runtoposition();
+
+        while (frontLeftMotor.isBusy() ||
+                frontRightMotor.isBusy() ||
+                backRightMotor.isBusy() ||
+                backLeftMotor.isBusy()) {
+        }
+        reset();
 
         }
     }
