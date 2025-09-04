@@ -1,4 +1,4 @@
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 @TeleOp
 @Config
-public class pcontroller extends LinearOpMode {
+public class pcontrollerlibrary extends LinearOpMode {
 
 
 
@@ -16,7 +16,7 @@ public class pcontroller extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        DcMotorEx pivot= hardwareMap.get(DcMotorEx.class, "fo");
+        DcMotorEx pivot= hardwareMap.get(DcMotorEx.class, "arm");
         pivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
 
@@ -24,7 +24,6 @@ public class pcontroller extends LinearOpMode {
 
         while (opModeIsActive()){
 
-            pivot.setPower(Math.abs(targetposition-pivot.getCurrentPosition())*0.01);
             telemetry.addData("currentposition",pivot.getCurrentPosition());
             telemetry.addData("power",(targetposition-pivot.getCurrentPosition())*0.01);
             telemetry.update();
