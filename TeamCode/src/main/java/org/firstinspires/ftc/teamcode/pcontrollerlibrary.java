@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 @TeleOp
 @Config
-public class pcontrollerlibrary extends LinearOpMode {
+public class pcontrollerLibrary extends LinearOpMode {
 
 
 
